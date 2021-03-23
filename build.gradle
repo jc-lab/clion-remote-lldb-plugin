@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.7.2"
+}
+
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+group 'kr.jclab.intellij'
+version '1.0.0'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+intellij {
+    version 'CL-2020.3'
+    plugins = ['com.intellij.clion', 'com.intellij.cidr.base'] // , 'com.intellij.modules.cidr.lang'
+    pluginName 'RemoteLLDB'
+}
