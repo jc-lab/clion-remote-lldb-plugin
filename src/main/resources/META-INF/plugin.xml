@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>kr.jclab.intellij.plugin.remotelldb</id>
+    <name>Remote LLDB</name>
+    <version>1.0.0</version>
+    <vendor url="https://jc-lab.net">JC-Lab</vendor>
+    <description>This plugin enable Remote LLDB Debugging</description>
+    <change-notes/>
+
+<!--    <depends>com.intellij.clion</depends>-->
+<!--    <depends>com.intellij.cidr.base</depends>-->
+    <depends>com.intellij.modules.clion</depends>
+    <depends>com.intellij.modules.cidr.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <configurationType implementation="kr.jclab.intellij.plugin.remotelldb.LLDBRemoteRunConfigurationType" />
+    </extensions>
+
+    <application-components>
+    </application-components>
+
+    <project-components>
+    </project-components>
+
+    <actions>
+<!--        <action class="org.intellij.examples.clion.plugin.HelloAction" id="SayHelloToClion" text="Say Hello to CLion">-->
+<!--            <add-to-group group-id="ToolsMenu"/>-->
+<!--            <add-to-group group-id="WelcomeScreen.QuickStart"/>-->
+<!--        </action>-->
+    </actions>
+</idea-plugin>
