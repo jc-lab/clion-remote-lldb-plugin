@@ -20,9 +20,9 @@ import javax.swing.*;
 
 public class LLDBRemoteRunConfigurationType extends CMakeRunConfigurationType {
   @NotNull
-  private static final String FACTORY_ID = "top.berial.lldbremote.config.factory";
+  private static final String FACTORY_ID = "kr.jclab.intellij.plugin.remotelldb.config.factory";
   @NotNull
-  public static final String TYPE_ID = "top.berial.lldbremote.config.type";
+  public static final String TYPE_ID = "kr.jclab.intellij.plugin.remotelldb.config.type";
   @NotNull
   public static final NotNullLazyValue<Icon> ICON = new NotNullLazyValue<Icon>() {
     @Override
