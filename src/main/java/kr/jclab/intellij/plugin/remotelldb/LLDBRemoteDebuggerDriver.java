@@ -83,7 +83,7 @@ public class LLDBRemoteDebuggerDriver extends LLDBDriver {
 
     private long magic(@NotNull GeneralCommandLine commandLine, @NotNull ThrowableComputable<CompositeRequest, ExecutionException> inpReq, boolean var3) throws ExecutionException {
         final Ref pidMsg = new Ref();
-        ThrowIfNotValid res = new ThrowIfNotValid<ProtocolResponses.Launch_Res>(CidrDebuggerBundle.message("lldb.launch.process.fail", new Object[0])) {
+        ThrowIfNotValid res = new ThrowIfNotValid<ProtocolResponses.Launch_Res>(CidrLLDBRemoteBundle.message("lldb.launch.process.fail", new Object[0])) {
             public void consume(ProtocolResponses.Launch_Res message) {
                 super.consume(message);
                 if (this.isValid()) {
@@ -95,7 +95,7 @@ public class LLDBRemoteDebuggerDriver extends LLDBDriver {
         this.printTargetCommandLine(commandLine);
         this.getProtobufClient().sendMessageAndWaitForReply(req, ProtocolResponses.Launch_Res.class, res);
         if (var3 && !res.isValid() && "process launch failed: Locked".equals(res.getMessage())) {
-            throw new LLDBDriverException(CidrDebuggerBundle.message("debug.lldb.lockedDeviceUserMessage", new Object[]{ApplicationNamesInfo.getInstance().getProductName()}));
+            throw new LLDBDriverException(CidrLLDBRemoteBundle.message("debug.lldb.lockedDeviceUserMessage", new Object[]{ApplicationNamesInfo.getInstance().getProductName()}));
         } else {
             res.throwIfNeeded();
             return (Long)pidMsg.get();
@@ -103,7 +103,7 @@ public class LLDBRemoteDebuggerDriver extends LLDBDriver {
     }
 
     private void detachProcess() throws ExecutionException {
-        ThrowIfNotValid res = new ThrowIfNotValid(CidrDebuggerBundle.message("lldb.detach.process.fail", new Object[0]));
+        ThrowIfNotValid res = new ThrowIfNotValid(CidrLLDBRemoteBundle.message("lldb.detach.process.fail", new Object[0]));
         this.getProtobufClient().sendMessageAndWaitForReply(ProtobufMessageFactory.detach(), ProtocolResponses.Detach_Res.class, res);
         if (!res.isValid() && !printProcessMsg(res.getMessage())) {
             res.throwIfNeeded();
