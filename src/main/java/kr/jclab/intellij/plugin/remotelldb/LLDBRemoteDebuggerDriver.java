@@ -142,9 +142,14 @@ public class LLDBRemoteDebuggerDriver extends LLDBDriver {
         Model.CommandLine.Builder builder = Model.CommandLine.newBuilder();
         builder.setExePath("");
         builder.setWorkingDir("");
-        Map env = commandLine.getEffectiveEnvironment();
-        for (Object iter: env.keySet()) {
-            //Add console env
+        Map<String, String> env = commandLine.getEnvironment();
+        for (Map.Entry<String, String> item : env.entrySet()) {
+            builder.addEnv(
+                    Model.EnvParam.newBuilder()
+                            .setName(item.getKey())
+                            .setValue(item.getValue())
+                            .build()
+            );
         }
         String[] paramters = commandLine.getParametersList().getArray();
         for(int i = 0; i < paramters.length; ++i) {
